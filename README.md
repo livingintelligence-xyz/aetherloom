@@ -103,6 +103,10 @@ swift test --package-path src/AetherloomCore
 
 Core tests use mock providers for testing — no network, no real user data.
 
+Pull requests run the core suite and then build the native Mac app in [CI](https://github.com/alexfilipe/aetherloom/actions/workflows/ci.yml). The app check uses Xcode 26.6 on macOS 26, builds the Debug configuration without signing credentials, and retains its build log and Xcode result bundle for 14 days. Both checks run against the exact PR head.
+
+A green build confirms compilation. Launch, folder-access, and real-folder sync smoke tests remain separate validation gates for the local workspace milestone.
+
 ## Not a backup replacement
 
 Lose access to one location, and your files still live elsewhere as complete, readable copies. Aetherloom improves availability, but sync is not a replacement for versioned backup.
