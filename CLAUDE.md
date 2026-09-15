@@ -199,7 +199,7 @@ xcodebuild -project src/AetherloomApp/AetherloomApp.xcodeproj -scheme Aetherloom
 
 Both commands above need Swift and Xcode, so neither runs on a Linux host. Do not treat a change as validated when the tests could not run, and do not describe CI-deferred work as locally tested.
 
-Run them on CI instead. `.github/workflows/ci.yml` runs `swift test` for `src/AetherloomCore` on a macOS runner for every pull request against `main`, and also accepts a manual trigger:
+Run them on CI instead. `.github/workflows/ci.yml` runs `swift test` for `src/AetherloomCore`, then builds the native app with Xcode 26.6 on macOS 26 for every pull request against `main`. Both jobs check out the exact PR head. The app build uses Debug with `CODE_SIGNING_ALLOWED=NO` and retains its log and Xcode result bundle for 14 days. This verifies compilation; it does not replace required user-Mac launch, folder-access, or real-folder smoke tests. The workflow also accepts a manual trigger:
 
 ```bash
 gh workflow run ci.yml --ref <branch>

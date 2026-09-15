@@ -1,7 +1,7 @@
 name: CI
 
-# Runs the AetherloomCore test suite on every push and pull request.
-# A green check here means `swift test` passed for the package.
+# Tests the core package, then builds the native Mac app.
+# Both jobs validate the PR head (or the selected push/manual-dispatch commit).
 
 on:
   push:
@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       # The package declares swift-tools-version 6.3, but the runner's stable
       # Xcode ships an older Swift. Select the newest stable Xcode anyway so a
@@ -78,3 +80,54 @@ jobs:
 
       - name: Run tests
         run: swift test
+
+  app-build:
+    name: AetherloomApp build
+    needs: test
+    runs-on: macos-26
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      # Use Apple's bundled compiler and an SDK that supports the app's
+      # macOS 26.5 deployment target. The core job keeps its Swift 6.3.2 setup.
+      - name: Select Xcode 26.6
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26.6'
+
+      - name: Record build environment
+        run: |
+          git rev-parse HEAD
+          sw_vers
+          xcodebuild -version
+          xcrun swift --version
+          xcrun --sdk macosx --show-sdk-version
+
+      - name: Build Mac app without signing
+        shell: bash
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project src/AetherloomApp/AetherloomApp.xcodeproj \
+            -scheme AetherloomApp \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            -derivedDataPath "$RUNNER_TEMP/AetherloomDerivedData" \
+            -resultBundlePath "$RUNNER_TEMP/AetherloomApp-build.xcresult" \
+            CODE_SIGNING_ALLOWED=NO \
+            build 2>&1 | tee "$RUNNER_TEMP/AetherloomApp-build.log"
+
+      - name: Upload app build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: AetherloomApp-build-diagnostics
+          path: |
+            ${{ runner.temp }}/AetherloomApp-build.log
+            ${{ runner.temp }}/AetherloomApp-build.xcresult
+          retention-days: 14
+          if-no-files-found: warn
