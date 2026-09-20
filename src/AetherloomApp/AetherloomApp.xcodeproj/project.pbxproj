@@ -278,7 +278,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexfilipe.AetherloomApp;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.livingintelligence.AetherloomApp;
 				PRODUCT_NAME = Aetherloom;
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -312,7 +312,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexfilipe.AetherloomApp;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.livingintelligence.AetherloomApp;
 				PRODUCT_NAME = Aetherloom;
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
