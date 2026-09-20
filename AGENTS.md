@@ -149,7 +149,8 @@ When a conflict is found:
 
 - Whenever posting a pull request comment as an agent, begin the comment with the exact prefix `Authored by agent: `.
 - Why it matters: a comment is attributed to whoever's account posted it, so without the prefix an agent's comment is indistinguishable from one the maintainer wrote. Someone reading the thread later — or an agent reacting to review feedback — has no way to tell whose judgment they are reading.
-- It applies to every pull request comment surface: top-level comments, review summaries, inline review comments, and replies in a thread. If it lands on a pull request, it needs the prefix.
+- It applies to every pull request comment surface: top-level conversation comments, review summaries, inline review comments, and replies in a thread.
+- Pull request titles and descriptions are exempt, both when the pull request is created and when its description is edited. They describe the proposed change; they are not comments for this rule.
 - Put it at the very start of the body, not further in, so it reads as attribution rather than as an aside.
 - Commits are exempt. Automating those is expected, and their authorship travels through git config rather than the API token.
 
@@ -198,7 +199,7 @@ xcodebuild -project src/AetherloomApp/AetherloomApp.xcodeproj -scheme Aetherloom
 
 Both commands above need Swift and Xcode, so neither runs on a Linux host. Do not treat a change as validated when the tests could not run, and do not describe CI-deferred work as locally tested.
 
-Run them on CI instead. `.github/workflows/ci.yml` runs `swift test` for `src/AetherloomCore` on a macOS runner for every pull request against `main`, and also accepts a manual trigger:
+Run them on CI instead. `.github/workflows/ci.yml` runs `swift test` for `src/AetherloomCore`, then builds the native app with Xcode 26.6 on macOS 26 for every pull request against `main`. Both jobs check out the exact PR head. The app build uses Debug with `CODE_SIGNING_ALLOWED=NO` and retains its log and Xcode result bundle for 14 days. This verifies compilation; it does not replace required user-Mac launch, folder-access, or real-folder smoke tests. The workflow also accepts a manual trigger:
 
 ```bash
 gh workflow run ci.yml --ref <branch>
