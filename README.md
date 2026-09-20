@@ -16,6 +16,10 @@
 </p>
 
 <p align="center">
+  <strong>Aetherloom is an open-source project by <a href="https://livingintelligence.xyz/">Living Intelligence</a>.</strong>
+</p>
+
+<p align="center">
   <a href="https://github.com/livingintelligence-xyz/aetherloom/actions/workflows/ci.yml"><img src="https://github.com/livingintelligence-xyz/aetherloom/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>&nbsp;<img src="https://img.shields.io/badge/platform-macOS-blue" alt="Platform: macOS" />&nbsp;<img src="https://img.shields.io/badge/swift-6.3-orange" alt="Swift 6.3" />&nbsp;<img src="https://img.shields.io/badge/UI-SwiftUI-purple" alt="SwiftUI" />
 </p>
 
@@ -62,7 +66,7 @@ The full design, including the hard safety boundaries, is in [architecture/core/
 
 Aetherloom is in **early development** and not yet available to download. The foundation is already taking shape: safe sync plans, conflict preservation, approval gates, and a provider-agnostic engine for keeping files aligned across the places you choose.
 
-Follow progress, open issues, or contribute on GitHub; the project website is [aetherloom.app](https://aetherloom.app).
+Follow progress, open issues, or contribute on [GitHub](https://github.com/livingintelligence-xyz/aetherloom); the project website is [aetherloom.app](https://aetherloom.app).
 
 ## Repository layout
 
