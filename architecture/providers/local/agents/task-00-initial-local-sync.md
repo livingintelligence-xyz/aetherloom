@@ -90,7 +90,7 @@ Every test creates and removes its own temp roots; deterministic (injected clock
 
 ## Prohibitions
 
-No changes to engine sources (`Reconcile/`, `Plan/`, `Planning/`, `Execution/`, `Orchestration/`, `Preview/`, `Advisory/`, `Models/`, `Storage/`) — if the contract cannot be met without one, stop and report. No `StorageProvider` protocol changes. No FSEvents, no `NSOpenPanel`/security-scoped bookmarks, no bridge/UI work, no NAS-specific tuning beyond the injected deadlines, no SQLite, no new dependencies. No real mounts, no real user folders, nothing outside test-created temp roots. Only `src/AetherloomCore/`; never touch `src/AetherloomApp/`, `www/`, `README.md`, `CLAUDE.md`, or `architecture/`.
+No changes to engine sources (`Reconcile/`, `Plan/`, `Planning/`, `Execution/`, `Orchestration/`, `Preview/`, `Advisory/`, `Models/`, `Storage/`) — if the contract cannot be met without one, stop and report. No `StorageProvider` protocol changes. No FSEvents, no `NSOpenPanel`/security-scoped bookmarks, no bridge/UI work, no NAS-specific tuning beyond the injected deadlines, no SQLite, no new dependencies. No real mounts, no real user folders, nothing outside test-created temp roots. Only `src/AetherloomCore/`; never touch `src/AetherloomApp/`, `www/`, `README.md`, `AGENTS.md`, or `architecture/`.
 
 ## Acceptance
 
