@@ -2,7 +2,7 @@
 
 This is Aetherloom's standard development framework for every feature and pull request. It uses short, evidence-driven evaluation loops to reach a safe implementation and a timely merge decision. Multi-agent orchestration is one way to run the loop; it is not the purpose of the loop.
 
-The framework supplements, and never relaxes, `AGENTS.md`, `CLAUDE.md`, and the safety invariants in `architecture/core/00-overview.md`.
+The framework supplements, and never relaxes, `AGENTS.md` and the safety invariants in `architecture/core/00-overview.md`.
 
 ## Precedent and intent
 

@@ -4,7 +4,7 @@
 
 The engine's real local boundary now exists: `LocalFolderStorageProvider` implements the full provider contract, conservative mutation/recovery behavior, and temporary-directory end-to-end tests. The production app has not crossed that boundary: it still starts `DemoEngineSession` over fakes and in-memory state. The next work composes the existing local provider into the durable `WorkspaceEngineSession` specified in [01-workspace-engine-session.md](01-workspace-engine-session.md).
 
-The strategic choice, restated from the development order in `CLAUDE.md`: **local folders first, then NAS, then iCloud Drive, then cloud APIs.** A local↔local sync exercises 100 % of the real pipeline — staging, journal, preconditions, trash, recovery — with the fewest new failure modes. iCloud Drive is then a small, well-contained delta (placeholder semantics on top of a filesystem provider) instead of the place where filesystem bugs and placeholder bugs are discovered simultaneously.
+The strategic choice, restated from the development order in `AGENTS.md`: **local folders first, then NAS, then iCloud Drive, then cloud APIs.** A local↔local sync exercises 100 % of the real pipeline — staging, journal, preconditions, trash, recovery — with the fewest new failure modes. iCloud Drive is then a small, well-contained delta (placeholder semantics on top of a filesystem provider) instead of the place where filesystem bugs and placeholder bugs are discovered simultaneously.
 
 ## 1. Milestones
 

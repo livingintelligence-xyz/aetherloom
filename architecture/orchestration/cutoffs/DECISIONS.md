@@ -94,6 +94,19 @@ Full entries for decisions whose feature or pull request is still in flight. App
 - Status: accepted
 - Resolving PR/SHA: Pending publication and exact-head CI; freeze disposition and immutable run link will be recorded in the PR description once the finish line passes.
 
+### CUT-029 - Remove duplicate repository instructions
+
+- Date: 2026-11-16
+- PR/layer and exact relevant SHA(s): Repository guidance cleanup on `remove-duplicate-agent-instructions`, based on `origin/main` at `f57c5d005d2ac75ffbb6eb2511798aa331a88fc2`; published head belongs in the PR description.
+- Decision/cutoff: Finish after one writer review, whitespace and local-link checks, exact preservation of the instruction body, removal of the duplicate file and mirror-only hook, replacement of obsolete architecture references, and verified branch/PR publication. Use the low-risk evaluation path; no application behavior or safety boundary changes.
+- Reason and evidence: The owner requested one repository instruction file, `AGENTS.md`, with the redundant mirror and its enforcement removed. The installed Claude Code version meets the requested minimum of 2.1.281.
+- What was completed: Scope and acceptance defined before evaluation; implementation and publication evidence will be recorded in the PR description.
+- What was explicitly deferred: Application changes, unrelated architecture cleanup, deployment, and merging.
+- Residual risk/severity: P3; older agent installations may still expect the retired mirror. Revisit if a supported installation demonstrably fails to load `AGENTS.md`.
+- Exact revisit trigger or acceptance condition: All named static checks must pass and the PR must contain only the requested cleanup and this decision entry. Reopen for lost guidance, a stale instruction reference, an unintended changed file, or failed required validation. Existing product and safety gates remain unchanged.
+- Status: accepted
+- Resolving PR/SHA: Pending publication; exact head and validation belong in the PR description.
+
 ## Carried backlog
 
 Open deferrals and accepted residual risks from closed decisions. Each is still live: treat the trigger as the condition that turns it into work. The named entry holds the full reasoning and evidence; retrieve it with its batch's command in the closed index below.

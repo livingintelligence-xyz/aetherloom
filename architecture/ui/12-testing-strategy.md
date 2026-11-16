@@ -66,4 +66,4 @@ For any change to `AetherloomAppApp`, `ContentView`, `AppModel`, scene declarati
 
 ## 5. Policy
 
-Per `CLAUDE.md`: no browser/visual QA for copy or styling tweaks; screenshots only when layout/interaction meaningfully changed. At L1, CI gates only `swift test --package-path src/AetherloomCore`. L5 adds shared-scheme app tests and the app build to CI without replacing the Swift suite. UI work never adds network, ML, or third-party test dependencies.
+Per `AGENTS.md`: no browser/visual QA for copy or styling tweaks; screenshots only when layout/interaction meaningfully changed. At L1, CI gates only `swift test --package-path src/AetherloomCore`. L5 adds shared-scheme app tests and the app build to CI without replacing the Swift suite. UI work never adds network, ML, or third-party test dependencies.
