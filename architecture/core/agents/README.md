@@ -14,7 +14,7 @@ Strictly serial except 04∥05. Never run two agents on the same files concurren
 ## Global rules (authoritative here; abbreviated in each prompt)
 
 1. **Safety invariants** (`../00-overview.md § Safety invariants`) **override everything**, including these prompts. On any apparent conflict: stop, report, don't implement.
-2. Work only inside `src/AetherloomCore/` unless the task says otherwise (task-08 adds a package target). Never touch `src/AetherloomApp/`, `www/`, `README.md`, `CLAUDE.md`.
+2. Work only inside `src/AetherloomCore/` unless the task says otherwise (task-08 adds a package target). Never touch `src/AetherloomApp/`, `www/`, `README.md`, `AGENTS.md`.
 3. Zero third-party dependencies; no ML/network/SQLite imports in the core target.
 4. Swift 6 strict concurrency: values `Codable + Hashable + Sendable`; mutable state in actors.
 5. Pure layers stay pure: no I/O, no `Date()`, no global UUID/RNG below the orchestrator — everything injected via environment values.
